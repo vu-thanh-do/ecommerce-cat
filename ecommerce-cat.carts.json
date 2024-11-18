@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "673afdcf682b2fd8288b3ac6"
+  },
+  "name": "Mèo Silver Lông Dài Nhập DD0083",
+  "items": [
+    {
+      "image": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1731917602/rcnxhfg8dnapyrie9mye.jpg",
+      "product": {
+        "$oid": "673ae3e598a4b32ae9cea0dd"
+      },
+      "quantity": 1,
+      "price": 32132,
+      "timBooking": null,
+      "kindOfRoom": [],
+      "toppings": [],
+      "total": 32132,
+      "_id": {
+        "$oid": "673afdcf682b2fd8288b3ac7"
+      }
+    }
+  ],
+  "user": {
+    "$oid": "673ab1cf5a73d99375e7fe7d"
+  },
+  "isFavorite": false,
+  "createdAt": {
+    "$date": "2024-11-18T08:41:51.848Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-18T08:41:51.848Z"
+  }
+}]

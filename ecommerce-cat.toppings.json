@@ -1,0 +1,66 @@
+[{
+  "_id": {
+    "$oid": "673ada9bec022cee2bc74ac9"
+  },
+  "name": "213",
+  "products": [
+    {
+      "$oid": "673ae2ea98a4b32ae9cea0ca"
+    },
+    {
+      "$oid": "673ae235145f6f0ef9da65c1"
+    },
+    {
+      "$oid": "673aecef682b2fd8288b3949"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-11-18T06:11:39.615Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-18T08:32:03.146Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "673adbebaddb5ab05f1a61ce"
+  },
+  "name": "ccc",
+  "owner": {
+    "$oid": "673aa96151bffd6d3dd32065"
+  },
+  "products": [
+    {
+      "$oid": "673ae3e598a4b32ae9cea0dd"
+    },
+    {
+      "$oid": "673ae235145f6f0ef9da65c1"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-11-18T06:17:15.096Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-18T08:13:54.620Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "673adc65addb5ab05f1a61d1"
+  },
+  "name": "23dsda",
+  "owner": {
+    "$oid": "673aa96151bffd6d3dd32065"
+  },
+  "products": [
+    {
+      "$oid": "673aecef682b2fd8288b3949"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-11-18T06:19:17.263Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-18T08:32:03.144Z"
+  }
+}]

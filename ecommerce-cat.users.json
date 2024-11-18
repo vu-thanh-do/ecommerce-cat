@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "673aa96151bffd6d3dd32065"
+  },
+  "username": "seller",
+  "avatar": "https://ui-avatars.com/api/?name=seller",
+  "account": "thanhdo9xi@gmail.com",
+  "password": "$2b$10$A0XO6RuMs2DjYtjwvaE2AOdCeJokTeNHS63zcIYNmtqsGOK3DMe.q",
+  "address": [],
+  "order": [],
+  "role": "staff",
+  "grade": 0,
+  "gender": "male",
+  "status": "active",
+  "point": 0,
+  "loyalCustomers": false,
+  "createdAt": {
+    "$date": "2024-11-18T02:41:37.080Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-18T06:10:03.531Z"
+  },
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2FhOTYxNTFiZmZkNmQzZGQzMjA2NSIsInVzZXJuYW1lIjoic2VsbGVyIiwicm9sZSI6InN0YWZmIiwiaWF0IjoxNzMxOTEwMjAzLCJleHAiOjE3MzIxNjk0MDN9.IgtX_SdGMzotvrWn1YJ_n0faOOHtkXdcuU4hztBC2TA"
+},
+{
+  "_id": {
+    "$oid": "673aa9aa51bffd6d3dd32068"
+  },
+  "username": "buyer",
+  "avatar": "https://ui-avatars.com/api/?name=buyer",
+  "account": "buyer@gmail.com",
+  "password": "$2b$10$OOZo3MVZBRICQzQ8e44aBuzXJvMBdj2aNPbArbPiBk0Hw78N1Qaba",
+  "address": [],
+  "order": [],
+  "role": "customer",
+  "grade": 0,
+  "gender": "female",
+  "status": "active",
+  "point": 0,
+  "loyalCustomers": false,
+  "createdAt": {
+    "$date": "2024-11-18T02:42:50.258Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-18T04:07:05.975Z"
+  },
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2FhOWFhNTFiZmZkNmQzZGQzMjA2OCIsInVzZXJuYW1lIjoiYnV5ZXIiLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3MzE4OTc3ODgsImV4cCI6MTczMjE1Njk4OH0.aI9bY-nwY2aYKVcdyCKuc1zjuPm8knz4vJbgB-XEGLk"
+},
+{
+  "_id": {
+    "$oid": "673ab1cf5a73d99375e7fe7d"
+  },
+  "username": "admin",
+  "avatar": "https://ui-avatars.com/api/?name=seller",
+  "account": "admin@gmail.com",
+  "password": "$2b$10$A0XO6RuMs2DjYtjwvaE2AOdCeJokTeNHS63zcIYNmtqsGOK3DMe.q",
+  "address": [],
+  "order": [],
+  "role": "admin",
+  "grade": 0,
+  "gender": "male",
+  "status": "active",
+  "point": 0,
+  "loyalCustomers": false,
+  "createdAt": {
+    "$date": "2024-11-18T02:41:37.080Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-18T08:20:29.082Z"
+  },
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2FiMWNmNWE3M2Q5OTM3NWU3ZmU3ZCIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzE5MTgwMjksImV4cCI6MTczMjE3NzIyOX0.OI-wpILIHtHI14G6PU5ZggV0MDpvoRtcYJh_InWoYnE"
+}]

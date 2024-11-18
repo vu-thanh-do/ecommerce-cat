@@ -1,0 +1,126 @@
+[{
+  "_id": {
+    "$oid": "673ae235145f6f0ef9da65c1"
+  },
+  "name": "mèo anh lông dài",
+  "images": [
+    {
+      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1731917625/ptyndcigbqfe7bm9ysjd.jpg",
+      "publicId": "ptyndcigbqfe7bm9ysjd",
+      "filename": "Meo-Silver-Long-Dai-Nhap-DD0083",
+      "_id": {
+        "$oid": "673af742682b2fd8288b39d0"
+      }
+    }
+  ],
+  "description": "mô tả ọk",
+  "sale": 2132132,
+  "category": {
+    "$oid": "673ac421be70bfde3d8c776a"
+  },
+  "sizes": [],
+  "toppings": [
+    {
+      "$oid": "673adbebaddb5ab05f1a61ce"
+    },
+    {
+      "$oid": "673ada9bec022cee2bc74ac9"
+    }
+  ],
+  "timBooking": "3213123",
+  "kindOfRoom": [],
+  "sex": "Giống cái",
+  "origin": "Nhập khẩu",
+  "weight": "2",
+  "is_deleted": false,
+  "is_active": true,
+  "createdAt": {
+    "$date": "2024-11-18T06:44:05.654Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-18T08:13:54.617Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "673ae3e598a4b32ae9cea0dd"
+  },
+  "name": "Mèo Silver Lông Dài Nhập DD0083",
+  "images": [
+    {
+      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1731917602/rcnxhfg8dnapyrie9mye.jpg",
+      "publicId": "rcnxhfg8dnapyrie9mye",
+      "filename": "MeoXam-Xanh-Long-Ngan-DD0088",
+      "_id": {
+        "$oid": "673af72a682b2fd8288b39b6"
+      }
+    }
+  ],
+  "description": "32131232",
+  "sale": 32132,
+  "category": {
+    "$oid": "673ac421be70bfde3d8c776a"
+  },
+  "sizes": [],
+  "toppings": [
+    {
+      "$oid": "673adbebaddb5ab05f1a61ce"
+    }
+  ],
+  "timBooking": "vui vẻ",
+  "kindOfRoom": [],
+  "sex": "Giống cái",
+  "origin": "Nhập khẩu",
+  "weight": "21",
+  "is_deleted": false,
+  "is_active": true,
+  "createdAt": {
+    "$date": "2024-11-18T06:51:17.775Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-18T08:13:30.293Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "673aecef682b2fd8288b3949"
+  },
+  "name": "Mèo Munchkin Lông Dài DD0079",
+  "images": [
+    {
+      "url": "https://res.cloudinary.com/ddx8kaolc/image/upload/v1731917665/bmyuox5i6ynyjptcdlcu.jpg",
+      "publicId": "bmyuox5i6ynyjptcdlcu",
+      "filename": "Meo-Munchkin-Long-Dai-DD0079",
+      "_id": {
+        "$oid": "673af763682b2fd8288b39ec"
+      }
+    }
+  ],
+  "description": "32131232",
+  "sale": 3123,
+  "category": {
+    "$oid": "673ac421be70bfde3d8c776a"
+  },
+  "sizes": [],
+  "toppings": [
+    {
+      "$oid": "673adc65addb5ab05f1a61d1"
+    },
+    {
+      "$oid": "673ada9bec022cee2bc74ac9"
+    }
+  ],
+  "timBooking": "vui vẻ",
+  "kindOfRoom": [],
+  "sex": "Giống cái",
+  "origin": "Nhập khẩu",
+  "weight": "3",
+  "is_deleted": false,
+  "is_active": true,
+  "createdAt": {
+    "$date": "2024-11-18T07:29:51.772Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-18T08:32:03.141Z"
+  }
+}]
