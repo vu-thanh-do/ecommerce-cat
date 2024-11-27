@@ -25,23 +25,20 @@ export const orderController = {
       };
       const encodeStripe = generatePaymentToken(note);
       /* validate */
-      const { error } = orderValidate.validate(body, { abortEarly: false });
-      if (error) {
-        return res.status(400).json({ error: error.message });
-      }
+   
 
       const items = body.items;
       /* tính tổng tiền của đơn hàng người dùng vừa đặt */
       let total = 0;
-      items.forEach((item) => {
-        total += item.quantity * item.price;
-        /* nếu mà sản phẩm có topping */
-        if (item.toppings.length > 0 && item.toppings) {
-          item.toppings.forEach((topping) => {
-            total += topping.price;
-          });
-        }
-      });
+      // items.forEach((item) => {
+      //   total += item.quantity * item.price;
+      //   /* nếu mà sản phẩm có topping */
+      //   if (item.toppings.length > 0 && item.toppings) {
+      //     item.toppings.forEach((topping) => {
+      //       total += topping.price;
+      //     });
+      //   }
+      // });
       let totalAll = 0;
       const priceShipping = Number(body.priceShipping) || 0;
       // check _id or phone user

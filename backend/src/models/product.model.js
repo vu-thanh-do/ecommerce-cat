@@ -47,6 +47,7 @@ const productSchema = new mongoose.Schema(
     ],
     timBooking: String,
     kindOfRoom: [],
+    comments: [],
     sex : String,
     price: Number,
     origin : String,
@@ -58,6 +59,10 @@ const productSchema = new mongoose.Schema(
     is_active: {
       type: Boolean,
       default: false,
+    },
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
     },
   },
   { timestamps: true, versionKey: false }

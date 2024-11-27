@@ -251,54 +251,54 @@ const MyOrder = () => {
                   </span>
                 </div>
                 <div className='top py-3 px-6 shadow rounded-md max-h-[250px] overflow-y-auto hidden-scroll-bar'>
-                  {order.items.map((item: any) => (
-                    <div key={item._id} className='item flex items-center mb-5'>
-                      <div className='left flex pr-4 flex-1'>
-                        <div className='image w-[100px] h-[100px] shrink-0'>
-                          <img className='w-full object-cover' src={item.image} alt='' />
-                        </div>
-                        <div className='title pl-3 flex flex-col'>
-                          <h3 title={item?.product?.name} className='line-clamp-2 text-[16px] font-semibold uppercase '>
-                            {item?.product.name}
-                          </h3>
-                          {/* <div className='category'>
-                          <span className='text-sm text-[#866312]'>Danh mục: Cà phê</span>
-                        </div> */}
-                          <div>
-                            <div className='size'>
-                              <span className='text-sm text-[#866312]'>Size: {item.size.name}</span>
+                  {order.items.map((item: any) => {
+                    console.log(item, 'item')
+                    return (
+                      <div key={item._id} className='item flex items-center mb-5'>
+                        <div className='left flex pr-4 flex-1'>
+                          <div className='image w-[100px] h-[100px] shrink-0'>
+                            <img className='w-full object-cover' src={item.image} alt='' />
+                          </div>
+                          <div className='title pl-3 flex flex-col'>
+                            <h3 title={item?.name} className='line-clamp-2 text-[16px] font-semibold uppercase '>
+                              {item?.name}
+                            </h3>
+                            {/* <div className='category'>
+                            <span className='text-sm text-[#866312]'>Danh mục: Cà phê</span>
+                          </div> */}
+                            <div>
+                              <div className={`topping ${item.toppings.length > 0 ? '' : 'hidden'}`}>
+                                <span className='text-sm text-[#866312]'>
+                                  Dịch vụ :{' '}
+                                  {item.toppings.map((topping: ITopping) =>
+                                    item.toppings[item.toppings.length - 1].name === topping.name
+                                      ? topping.name + '.'
+                                      : topping.name + ', '
+                                  )}
+                                </span>
+                              </div>
                             </div>
-                            <div className={`topping ${item.toppings.length > 0 ? '' : 'hidden'}`}>
-                              <span className='text-sm text-[#866312]'>
-                                Dịch vụ :{' '}
-                                {item.toppings.map((topping: ITopping) =>
-                                  item.toppings[item.toppings.length - 1].name === topping.name
-                                    ? topping.name + '.'
-                                    : topping.name + ', '
-                                )}
-                              </span>
+                            <div className='quantity'>x{item.quantity}</div>
+                          </div>
+                        </div>
+                        <div className='right'>
+                          {/* <div className='price ml-3 flex items-center'>
+                            <span className='new-price text-[#D8B979] text-sm align-middle font-medium'>
+                              {formatCurrency(item.price)}
+                            </span>
+                          </div> */}
+                          <div className='middle flex justify-end items-center my-1 py-2 px-6 shadow rounded-md'>
+                            <div className='total-price'>
+                              <span className='mr-[10px] text-sm text=black'>Thành tiền:</span>
+                              <span className='text-2xl text-[#D8B979]'>{formatCurrency(item.price)}</span>
                             </div>
                           </div>
-                          <div className='quantity'>x{item.quantity}</div>
                         </div>
                       </div>
-                      <div className='right'>
-                        <div className='price ml-3 flex items-center'>
-                          {/* <span className='old-price line-through mr-1 text-black opacity-25 overflow-hidden'>₫90.000</span> */}
-                          <span className='new-price text-[#D8B979] text-sm align-middle font-medium'>
-                            {formatCurrency(item.price)}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
-                <div className='middle flex justify-end items-center my-1 py-2 px-6 shadow rounded-md'>
-                  <div className='total-price'>
-                    <span className='mr-[10px] text-sm text=black'>Thành tiền:</span>
-                    <span className='text-2xl text-[#D8B979]'>{formatCurrency(order.total)}</span>
-                  </div>
-                </div>
+
                 <div className='bottom flex items-center justify-end py-4 px-6 shadow rounded-md'>
                   <div className='note flex-1 '>
                     <span className='text-sm block w-[400px] max-w-[400px] text-left text-gray-500 '>

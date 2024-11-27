@@ -13,6 +13,7 @@ import { Button, DatePicker, Form, Input } from 'antd'
 import { RangePickerProps } from 'antd/es/date-picker'
 import moment from 'moment'
 import dayjs from 'dayjs'
+import axios from 'axios'
 
 type PopupDetailProductProps = {
   showPopup: boolean
@@ -39,8 +40,13 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product }: PopupDetailProd
   const [checkedToppings, setCheckedToppings] = useState<{ name: string; price: number; _id: string }[]>([])
   const [checkedkindOfRoom, setCheckedkindOfRoom] = useState<{ name: string; price: number }[]>([])
   const [timBooking, setTimBooking] = useState<number>(0)
+  const [newComment, setNewComment] = useState('')
+  const [editingIndex, setEditingIndex] = useState(null)
+  const [editedComment, setEditedComment] = useState('')
+  const [comments, setComments] = useState([])
 
   const { user } = useAppSelector((state) => state.persistedReducer.auth)
+  console.log(user, 'useruseruser')
   /* xử lý sự kiện check box phân topping */
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const toppingPrice = Number(event.target.value)
@@ -76,6 +82,7 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product }: PopupDetailProd
     setQuantity(1)
     setTotalToppingPrice(0)
     setCheckedToppings([])
+    setComments(product?.comments)
     // setNameRadioInput(product.sizes[0].name);
 
     //reset checkbox when popup close
@@ -134,7 +141,50 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product }: PopupDetailProd
       setPrice((prevPrice) => prevPrice + priceChange * product.timBooking)
     }
   }
+  const handleAddComment = async () => {
+    if (newComment.trim() === '') return
+    try {
+      await axios.post(`http://localhost:8000/api/comments/${product._id}`, {
+        userId: user._id,
+        username: user.username,
+        avatar: user.avatar,
+        content: newComment
+      })
+      setNewComment('')
+      const response = await axios.get(`http://localhost:8000/api/product/${product._id}`)
+      setComments(response.data.data.comments)
+    } catch (error) {
+      console.error('Error adding comment:', error)
+    }
+  }
+  // Sửa bình luận
+  const handleEditComment = async (index: any) => {
+    if (editedComment.trim() === '') return
+    try {
+      await axios.post(`http://localhost:8000/api/edit-comment/${product._id}?index=${index}`, {
+        content: editedComment
+      })
+      setEditingIndex(null)
+      setEditedComment('')
+      // Cập nhật lại danh sách bình luận sau khi sửa
+      const response = await axios.get(`http://localhost:8000/api/product/${product._id}`)
+      console.log(response, 'response')
+      setComments(response.data.data.comments)
+    } catch (error) {
+      console.error('Error editing comment:', error)
+    }
+  }
 
+  // Xóa bình luận
+  const handleRemoveComment = async (index: any) => {
+    try {
+      await axios.get(`http://localhost:8000/api/remove-comment/${product._id}?index=${index}`)
+      const response = await axios.get(`http://localhost:8000/api/product/${product._id}`)
+      setComments(response.data.data.comments)
+    } catch (error) {
+      console.error('Error removing comment:', error)
+    }
+  }
   if (!product) return null
 
   return (
@@ -219,12 +269,10 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product }: PopupDetailProd
                     Yêu thích
                   </button>
                   <button
-                    onClick={() => {
-                      handleAddToCart(2)
-                    }}
+
                     className='btn-price bg-pink-500 text-white px-5 h-8 rounded-[32px] leading-[32px] md:ml-[10px] text-sm'
                   >
-                    Xem thông tin người bán
+                     thông tin người bán - <span> {product?.owner?.phone}</span>
                   </button>
                 </div>
               </div>
@@ -335,25 +383,53 @@ const PopupDetailProduct = ({ showPopup, togglePopup, product }: PopupDetailProd
                   </div>
                 </div>
                 <div className='px-5'>
-                  <Form
-                    name='basic'
-                    initialValues={{ remember: true }}
-                    // onFinish={onFinish}
-                    // onFinishFailed={onFinishFailed}
-                    autoComplete='off'
-                  >
+                  <Form autoComplete='off'>
                     <Form.Item name='username' rules={[{ required: true, message: 'Please input your username!' }]}>
                       <Input.TextArea
                         className='rounded-md border border-[#ccc] h-[38px] w-full'
                         placeholder='nhập bình luận '
+                        value={newComment}
+                        onChange={(e) => setNewComment(e.target.value)}
                       />
                     </Form.Item>
                     <Form.Item label={null}>
-                      <Button type='primary' htmlType='submit'>
+                      <Button type='primary' onClick={handleAddComment}>
                         Submit
                       </Button>
                     </Form.Item>
                   </Form>
+                </div>
+                <div className='comments-list'>
+                  {comments?.map((item: any, index: any) => (
+                    <div
+                      key={index}
+                      className='comment-item flex items-center justify-between p-3 mb-2 border border-gray-300 rounded-md'
+                    >
+                      <div className='comment-content flex-1'>
+                        <img src={item.avatar} alt='avatar' className='w-8 h-8 rounded-full' />
+                        <p className='font-semibold'>{item.username}</p>
+                        {editingIndex === index ? (
+                          <div>
+                            <Input
+                              value={editedComment}
+                              onChange={(e) => setEditedComment(e.target.value)}
+                              placeholder='Sửa bình luận'
+                            />
+                            <Button onClick={() => handleEditComment(index)}>Lưu</Button>
+                          </div>
+                        ) : (
+                          <p>{item.content}</p>
+                        )}
+                      </div>
+
+                      {user?._id == item?.userId && (
+                        <div className='comment-actions flex space-x-2'>
+                          <Button onClick={() => setEditingIndex(index)}>Sửa</Button>
+                          <Button onClick={() => handleRemoveComment(index)}>Xóa</Button>
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
               {/*  */}

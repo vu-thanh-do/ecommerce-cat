@@ -36,7 +36,7 @@ const CardTwo = ({ price, onClick, title, isCurrency, isSale }: CardTwoProps) =>
             />
           </svg>
         </div>
-        {isSale && <p className='text-base'>Phòng đặt nhiều nhất</p>}
+        {isSale && <p className='text-base'>Đơn đặt nhiều nhất</p>}
       </div>
 
       <div className='mt-4'>

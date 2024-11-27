@@ -29,6 +29,7 @@ import fs from 'fs';
 import { feedBack } from './controllers/feedback.controller.js';
 import cron from 'node-cron';
 import Order from './models/order.model.js';
+import Product from './models/product.model.js';
 // import Order from './models/order.model.js';
 
 //lấy  jwt
@@ -192,7 +193,89 @@ app.get('/api/updateUserloyalCustomers/:id', async (req, res) => {
     return res.status(400).json({ message: error.message });
   }
 });
+app.post('/api/comments/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = req.body;
+    const dataProduct = await Product.findById(id);
+    if (!dataProduct) {
+      return res.status(404).json({
+        message: 'not found',
+      });
+    }
+    dataProduct.comments.push(data);
+    await dataProduct.save();
+    return res.status(201).json({
+      message: 'success',
+    });
+  } catch (error) {
+    return res.json({
+      message: error.message,
+    });
+  }
+});
+app.post('/api/edit-comment/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { index } = req.query;
+    const data = req.body;
+    console.log('Product ID:', id);
+    console.log('Index:', index);
+    console.log('Body:', req.body);
+    if (!data.content) {
+      return res.status(400).json({
+        message: 'Content is required',
+      });
+    }
+    const dataProduct = await Product.findById(id);
+    if (!dataProduct) {
+      return res.status(404).json({
+        message: 'Product not found',
+      });
+    }
+    if (index < 0 || index >= dataProduct.comments.length) {
+      return res.status(400).json({
+        message: 'Invalid comment index',
+      });
+    }
+    dataProduct.comments[index] = { ...dataProduct.comments[index], content: data.content };
+    await dataProduct.save();
+    return res.status(201).json({
+      message: 'Comment updated successfully',
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message,
+    });
+  }
+});
+app.get('/api/remove-comment/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { index } = req.query;
 
+    const dataProduct = await Product.findById(id);
+    if (!dataProduct) {
+      return res.status(404).json({
+        message: 'Product not found',
+      });
+    }
+    if (index < 0 || index >= dataProduct.comments.length) {
+      return res.status(400).json({
+        message: 'Invalid comment index',
+      });
+    }
+    dataProduct.comments.splice(index, 1);
+    await dataProduct.save();
+    return res.status(201).json({
+      message: 'Comment remove successfully',
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message,
+    });
+  }
+});
 // cron.schedule(
 //   '0 0 * * *',
 //   async () => {

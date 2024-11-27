@@ -46,7 +46,7 @@ export const ProductAnalytic = ({ dataAnalytics2, dataAnalytics }: ProductAnalyt
       )
     },
     {
-      title: 'Tên Phòng',
+      title: 'Tên ',
       dataIndex: 'name',
       key: 'name',
       render: (text: string) => {
@@ -70,8 +70,8 @@ export const ProductAnalytic = ({ dataAnalytics2, dataAnalytics }: ProductAnalyt
   ]
   return (
     <>
-      <CardTwo title='Phòng' price={dataAnalytics.products[0].value} onClick={() => setOpen(!open)} />
-      <Drawer width={1200} title='Thông tin Phòng trong cửa hàng' placement='right' onClose={onClose} open={open}>
+      <CardTwo title='Sản phẩm' price={dataAnalytics.products[0].value} onClick={() => setOpen(!open)} />
+      <Drawer width={1200} title='Thông tin  trong cửa hàng' placement='right' onClose={onClose} open={open}>
         <div className='grid grid-cols-4 gap-6'>
           <CardTwo
             price={dataAnalytics2?.['TopSell']['Khách sạn book nhiều nhất']?.count}

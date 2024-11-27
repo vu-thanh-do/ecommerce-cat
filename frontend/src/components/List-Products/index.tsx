@@ -56,6 +56,7 @@ const ListProducts = ({ products, isLoading, queryConfig }: ListProductsProps) =
     try {
       const { data } = await http.get(`/product/${id}`)
       setProduct(data.data)
+
       setIsShowPopup(true)
     } catch (error) {
       console.log((error as AxiosError).message)

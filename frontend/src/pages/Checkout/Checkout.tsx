@@ -171,8 +171,9 @@ const Checkout = () => {
 
   // tong cong tien
   const totalAllMoneyCheckOut = useMemo(() => {
-    return moneyShipping + totalMoneyCheckout - moneyPromotion
-  }, [moneyPromotion, moneyShipping, totalMoneyCheckout])
+    // return moneyShipping + totalMoneyCheckout - moneyPromotion
+    return totalMoneyCheckout
+  }, [totalMoneyCheckout])
 
   const handleFormInfoCheckout = handleSubmit((data) => {
     if (Number(pickGapStore.value) > 3000000000) {
@@ -361,20 +362,6 @@ const Checkout = () => {
                 />
                 <span className={`${styles.checkmark_radio} group-hover:bg-[#ccc]`}></span>
               </label>
-              <label className={` ${styles.container_radio} cod-payment block group`}>
-                <span className='text-sm'>Thanh toán qua Ví vnPay</span>
-                <input
-                  className='absolute opacity-0'
-                  defaultChecked
-                  type='radio'
-                  value='vnpay'
-                  {...register('paymentMethod')}
-                />
-                <span className={`${styles.checkmark_radio} group-hover:bg-[#ccc]`}></span>
-              </label>
-              <label className={` ${styles.container_radio} cod-payment group !hidden`}></label>
-
-              {errors.paymentMethod && <span className='text-red-500 text-[13px]'>{errors.paymentMethod.message}</span>}
             </div>
           </div>
         </form>
@@ -395,7 +382,7 @@ const Checkout = () => {
                 dataCartCheckout.items.map((item) => <CheckoutItem key={uuidv4()} dataCartCheckout={item} />)}
               {/* <CheckoutItem /> */}
             </div>
-            <div className='pt-[10px] pb-[15px] flex items-center justify-between border-transparent border border-b-[#f1f1f1]'>
+            {/* <div className='pt-[10px] pb-[15px] flex items-center justify-between border-transparent border border-b-[#f1f1f1]'>
               <div className='gap-x-4 flex items-center max-w-[50%]'>
                 <img className='w-[24px] max-w-[24px]' src='/icon-promotion.png' alt='' />
                 <span className='text-sm line-clamp-1'>
@@ -407,12 +394,12 @@ const Checkout = () => {
                   Thêm khuyến mại
                 </Button>
               </div>
-            </div>
+            </div> */}
             <div className='py-[6px] border-transparent border border-b-[#f1f1f1]'>
               <div className=' flex items-center justify-between'>
                 <div className='text-sm'>
                   <p>
-                    Số lượng phòng: <span className='font-bold'>{totalQuantity}</span> phòng
+                    Số lượng : <span className='font-bold'>{totalQuantity}</span>
                   </p>
                 </div>
                 <div className='flex items-center py-1 text-sm'>
@@ -424,14 +411,14 @@ const Checkout = () => {
                 <span>Quãng đường:</span>
                 <span className='w-[80px] text-right'>{pickGapStore.text ? pickGapStore.text : '0 Km'}</span>
               </div> */}
-              <div className='flex justify-end py-1 text-sm'>
+              {/* <div className='flex justify-end py-1 text-sm'>
                 <span>Phí vận chuyển: </span>
                 <span className='w-[80px] text-right'>{formatCurrency(moneyShipping)}</span>
-              </div>
-              <div className='flex justify-end py-1 text-sm'>
+              </div> */}
+              {/* <div className='flex justify-end py-1 text-sm'>
                 <span>Khuyến mãi: </span>
                 <span className='w-[80px] text-right'>{formatCurrency(moneyPromotion)}</span>
-              </div>
+              </div> */}
               <div className='flex justify-end py-1 text-sm'>
                 <span className='font-bold'>Tổng cộng: </span>
                 <span className='w-[80px] text-right text-[#86744e] font-bold'>
@@ -453,7 +440,7 @@ const Checkout = () => {
                 </span>
               </Button>
 
-              <Link to='/products'>
+              {/* <Link to='/products'>
                 <Button type='keep-buying' size='large' shape='circle'>
                   Tiếp tục đặt phòng
                 </Button>
@@ -462,7 +449,7 @@ const Checkout = () => {
                 <span className='block' onClick={handelBookingCronJob}>
                   Hẹn lịch đặt
                 </span>
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>

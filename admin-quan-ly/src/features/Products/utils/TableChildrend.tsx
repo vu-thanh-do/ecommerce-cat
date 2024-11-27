@@ -5,7 +5,7 @@ import { formatCurrency } from '~/utils'
 export default function TableChildrend({ products }: any) {
   const columns = [
     {
-      title: 'Tên Phòng',
+      title: 'Tên ',
       dataIndex: 'name',
       key: 'name',
       width: 150

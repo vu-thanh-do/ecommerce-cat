@@ -104,7 +104,7 @@ const MyOrderDetail = () => {
           <div className='bg_image'></div>
         </div>
         <div className='content'>
-          <h2 className='mb-4 text-xl text-[#866312]'>Thông tin phòng đã đặt</h2>
+          <h2 className='mb-4 text-xl text-[#866312]'>Thông tin  đã đặt</h2>
           <div className='list-items'>
             {orderData &&
               orderData?.order?.items.length > 0 &&
@@ -193,7 +193,7 @@ const MyOrderDetail = () => {
               </div>
             </div>
             <div className='flex justify-end  items-center py-3 text-right border-b border-b-[#ccc]'>
-              <div className='text-[12px] pr-2'>Loại phòng</div>
+              <div className='text-[12px] pr-2'>Loại </div>
               <div className='w-[200px] text-[#866312] border-l border-l-[#ccc]'>
                 {orderData && orderData?.order?.items?.map((preResult, index) => (
                   <div key={index}>

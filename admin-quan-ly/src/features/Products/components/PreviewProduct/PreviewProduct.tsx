@@ -33,7 +33,7 @@ const PreviewProduct = () => {
 
   return (
     <Drawer
-      title='Xem chi tiết Phòng'
+      title='Xem chi tiết '
       placement='right'
       open={product ? openDrawer : false}
       width={800}

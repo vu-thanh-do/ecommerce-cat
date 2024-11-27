@@ -74,7 +74,7 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
       render: (image: string) => <img className='w-[100px]' src={image} />
     },
     {
-      title: 'Tên Phòng',
+      title: 'Tên ',
       dataIndex: 'productName',
       key: 'productName',
       render: (name: string) => <span className='font-semibold text-base'>{name ? name : '???'}</span>

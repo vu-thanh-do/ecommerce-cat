@@ -26,22 +26,21 @@ const orderSchema = new mongoose.Schema(
           // product này là id của product
           type: mongoose.Schema.Types.ObjectId,
           ref: 'Product',
-          required: true,
         },
         image: { type: String },
         timBooking: Number,
         kindOfRoom: [],
-        quantity: { type: Number, required: true },
-        price: { type: Number, required: true },
+        quantity: { type: Number },
+        price: { type: Number },
         toppings: [
           {
-            name: { type: String, required: true },
-            price: { type: Number, required: true },
+            name: { type: String },
+            price: { type: Number },
           },
         ],
         size: {
-          name: { type: String, required: true },
-          price: { type: Number, required: true },
+          name: { type: String },
+          price: { type: Number },
         },
       },
     ],
@@ -74,7 +73,7 @@ const orderSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-      email: { type: String, required: true },
+      email: { type: String },
       phone: {
         type: String,
         required: true,

@@ -54,6 +54,7 @@ export const ProductController = {
         is_active: body.is_active,
         kindOfRoom: body.kindOfRoom,
         timBooking: body.timBooking,
+        owner : body.owner,
       };
       const product = await Product.create(req.body);
       if (!product) {
@@ -153,6 +154,7 @@ export const ProductController = {
         { path: 'category', select: 'name' },
         { path: 'sizes', select: 'name price is_default' },
         { path: 'toppings', select: '-products' },
+        { path: 'owner', select: '-password' },
       ]);
       if (!product) {
         return res.status(404).json({ message: 'fail', err: 'Not found Product' });

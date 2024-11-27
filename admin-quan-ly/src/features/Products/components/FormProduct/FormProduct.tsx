@@ -36,7 +36,7 @@ const FormProduct = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [images, setImages] = useState<IImage[]>([])
   const [productEdit, setProductEdit] = useState<IProduct | null>(null)
-
+  const { user } = useAppSelector((state: RootState) => state.persistedReducer.auth)
   const { productId } = useAppSelector((state) => state.products)
   const { data: dataCategories } = useGetAllCategoryQuery({ ...infoPage })
   const { data: dataToppings } = useGetAllToppingsQuery({ ...infoPage })
@@ -110,7 +110,7 @@ const FormProduct = () => {
     }
 
     try {
-      const response = await createProduct({ ...values, images }).unwrap()
+      const response = await createProduct({ ...values, images , owner : user._id }).unwrap()
       if (response.message === 'success' || response.message === 'succes') {
         message.success('Thêm  thành công!')
       }

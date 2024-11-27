@@ -210,7 +210,7 @@ const ListConfirmOrders = () => {
       render: (user: any) => <UserInfoRow user={user} />
     },
     {
-      title: 'Ảnh Phòng',
+      title: 'Ảnh ',
       dataIndex: 'products',
       key: 'products',
       width: 105,

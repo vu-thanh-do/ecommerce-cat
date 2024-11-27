@@ -8,11 +8,11 @@ interface BarChartSimpleProps {
 
 export const BarChartSimple = ({ data }: BarChartSimpleProps) => {
   const analytics = [
-    { name: 'Phòng', Tổng: data.products[0].value, 'Đang hoạt động': data.products[1].value },
+    { name: 'Sản phẩm', Tổng: data.products[0].value, 'Đang hoạt động': data.products[1].value },
     { name: 'Khách hàng', Tổng: data.users[0].value, 'Đang hoạt động': data.users[1].value },
     { name: 'Mã giảm giá', Tổng: data.vouchers[0].value, 'Đang hoạt động': data.vouchers[1].value },
     {
-      name: 'Danh mục Phòng',
+      name: 'Danh mục ',
       Tổng: data.categorys[0].value,
       'Đang hoạt động': data.categorys[1].value
     },

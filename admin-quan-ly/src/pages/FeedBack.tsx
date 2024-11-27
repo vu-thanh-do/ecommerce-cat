@@ -17,10 +17,10 @@ const FeedBack = () => {
   }, [])
   const dataSource = dataFeedBack?.map((items: any, index: number) => ({
     key: items._id,
-    user: items.idUser.username,
+    user: items?.idUser?.username,
     start: items.start,
     message: items.message,
-    pro: items.idPro.name,
+    pro: items?.idPro?.name,
     stt: index + 1,
     feedBackForAdmin: items.feedBackForAdmin
   }))
@@ -47,7 +47,7 @@ const FeedBack = () => {
       key: 'message'
     },
     {
-      title: 'Phòng',
+      title: 'Sản phẩm',
       dataIndex: 'pro',
       key: 'pro'
     },

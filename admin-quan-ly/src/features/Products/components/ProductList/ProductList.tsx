@@ -42,7 +42,7 @@ const ProductList = () => {
   return (
     <div>
       <div style={{ marginBottom: 16 }} className='flex items-center gap-3'>
-        <Tooltip title={hasSelected ? `Đang chọn ${selectedRowKeys?.length} Phòng` : ''}>
+        <Tooltip title={hasSelected ? `Đang chọn ${selectedRowKeys?.length} ` : ''}>
           <ButtonAntd
             size='large'
             danger
