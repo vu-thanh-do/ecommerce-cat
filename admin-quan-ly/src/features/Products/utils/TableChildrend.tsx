@@ -21,20 +21,6 @@ export default function TableChildrend({ products }: any) {
     },
 
     {
-      title: 'Size',
-      dataIndex: 'size',
-      key: 'size',
-      width: 170,
-      render: (size: any) => {
-        return (
-          <div className='relative grid grid-cols-2'>
-            <p className='border-r-graydark w-full pr-3 uppercase border-r border-opacity-50'>{size.name}</p>
-            <p className='w-full pl-3'>{formatCurrency(size.price)}</p>
-          </div>
-        )
-      }
-    },
-    {
       title: 'Topping ',
       dataIndex: 'topping',
       key: 'topping',

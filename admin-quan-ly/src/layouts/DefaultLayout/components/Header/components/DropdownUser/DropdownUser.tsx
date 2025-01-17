@@ -55,7 +55,7 @@ const DropdownUser = () => {
       <Link ref={trigger} onClick={() => setDropdownOpen(!dropdownOpen)} className='flex items-center gap-4' to='#'>
         <span className='lg:block hidden text-right'>
           <span className='dark:text-white block text-sm font-medium text-black'>{user?.username}</span>
-          <span className='block text-xs capitalize'>{user?.role === 'staff' ? 'Nhân viên' : user?.role}</span>
+          <span className='block text-xs capitalize'>{user?.role === 'staff' ? 'Người bán' : user?.role}</span>
         </span>
 
         <span className='w-12 h-12 rounded-full'>

@@ -87,8 +87,8 @@ const MyCart = () => {
         <div className='cart '>
           <div className='flex items-center justify-start my-5 cart-ss2'>
             <img className='img-toco h-[40px] pr-2' src='/inner_image_01.png' />
-            <span className='pr-2 cart-ss2-one'>x</span>
-            <span className='cart-ss2-two pr-2 text-[#8a733f]'>{quantity}</span>
+            {/* <span className='pr-2 cart-ss2-one'>x</span>
+            <span className='cart-ss2-two pr-2 text-[#8a733f]'>{quantity}</span> */}
             <span className='pr-2 cart-ss2-three'>=</span>
             <span className='cart-ss2-four text-[#8a733f]'>{formatCurrency(total)}</span>
           </div>

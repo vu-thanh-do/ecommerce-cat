@@ -90,7 +90,7 @@ const DetailOrder = ({ open }: DetailOrderProps) => {
       title: 'Size',
       dataIndex: 'size',
       key: 'size',
-      render: (size) => <span className='font-semibold text-base'>{size.name}</span>
+      render: (size) => <span className='font-semibold text-base'>{size?.name}</span>
     },
     {
       title: 'Dịch vụ',

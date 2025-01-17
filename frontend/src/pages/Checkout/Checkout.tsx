@@ -362,6 +362,20 @@ const Checkout = () => {
                 />
                 <span className={`${styles.checkmark_radio} group-hover:bg-[#ccc]`}></span>
               </label>
+              <label className={` ${styles.container_radio} cod-payment block group`}>
+                <span className='text-sm'>Thanh toán qua Ví vnPay</span>
+                <input
+                  className='absolute opacity-0'
+                  defaultChecked
+                  type='radio'
+                  value='vnpay'
+                  {...register('paymentMethod')}
+                />
+                <span className={`${styles.checkmark_radio} group-hover:bg-[#ccc]`}></span>
+              </label>
+              <label className={` ${styles.container_radio} cod-payment group !hidden`}></label>
+
+              {errors.paymentMethod && <span className='text-red-500 text-[13px]'>{errors.paymentMethod.message}</span>}
             </div>
           </div>
         </form>

@@ -16,12 +16,7 @@ export const BarChartSimple = ({ data }: BarChartSimpleProps) => {
       Tổng: data.categorys[0].value,
       'Đang hoạt động': data.categorys[1].value
     },
-    { name: 'Bài viết', Tổng: data.blogs[0].value, 'Đang hoạt động': data.blogs[1].value },
-    {
-      name: 'Danh mục bài viết',
-      Tổng: data.categoryBlogs[0].value,
-      'Đang hoạt động': data.categoryBlogs[1].value
-    }
+
   ]
 
   return (

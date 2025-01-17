@@ -182,22 +182,11 @@ const MyOrderDetail = () => {
               </div>
             </div>
             <div className='flex justify-end  items-center py-3 text-right border-b border-b-[#ccc]'>
-              <div className='text-[12px] pr-2'>Thời gian lưu trú</div>
-              <div className='w-[200px] text-[#866312] border-l border-l-[#ccc]'>
-                {orderData && orderData?.order?.items?.map((preResult, index) => (
-                  <div key={index}>
-                    <p>{ Number(preResult?.timBooking  / preResult?.product?.timBooking)} Ngày</p>
-                  </div>
-                ))}
-                {/*  */}
-              </div>
-            </div>
-            <div className='flex justify-end  items-center py-3 text-right border-b border-b-[#ccc]'>
               <div className='text-[12px] pr-2'>Loại </div>
               <div className='w-[200px] text-[#866312] border-l border-l-[#ccc]'>
                 {orderData && orderData?.order?.items?.map((preResult, index) => (
                   <div key={index}>
-                    <p>{preResult?.kindOfRoom[0].name }</p>
+                    <p>{preResult?.kindOfRoom[0]?.name }</p>
                   </div>
                 ))}
                 {/*  */}

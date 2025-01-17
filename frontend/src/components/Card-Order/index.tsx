@@ -109,10 +109,11 @@ const CardOrder = ({ product }: CardOrderProps) => {
                   </span>
                 </div>
                 <div className='total text-[#8a733f]'>
-                  {formatCurrency(item.price)} x {item.quantity}
+                  {formatCurrency(item.price)}
+                   {/* x {item.quantity} */}
                 </div>
               </div>
-              <div className='flex select-none'>
+              {/* <div className='flex select-none'>
                 <div
                   className={`quantity w-[20px] cursor-pointer h-[20px] bg-[#799dd9] rounded-full text-white flex justify-around items-center ${
                     (updateCartDbRes.isLoading || deleteCartDBRes.isLoading) && 'cursor-no-drop'
@@ -130,7 +131,7 @@ const CardOrder = ({ product }: CardOrderProps) => {
                 >
                   <AiOutlinePlus />
                 </div>
-              </div>
+              </div> */}
             </div>
           ))}
       </div>

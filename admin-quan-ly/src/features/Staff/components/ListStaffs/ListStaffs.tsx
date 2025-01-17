@@ -4,6 +4,7 @@ import { Button as ButtonAnt, Image, Input, Popconfirm, Space, Table, Tooltip } 
 import { ColumnsType } from 'antd/es/table'
 import type { FilterConfirmProps } from 'antd/es/table/interface'
 import { ColumnType } from 'antd/lib/table'
+import axios from 'axios'
 import { useRef, useState } from 'react'
 import Highlighter from 'react-highlight-words'
 import { BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs'
@@ -171,37 +172,48 @@ export const ListStaffs = () => {
       // title: <span className='block text-center'>Action</span>,
       key: 'action',
       width: 200,
-      render: (_: any, staff: IUser) => (
-        <div className='flex items-center justify-center'>
-          <Space size='middle'>
-            <Tooltip title='Cập nhật thông tin nhân viên này'>
-              <ButtonAnt
-                className='bg-primary hover:!text-white flex items-center justify-center text-white'
-                size='large'
-                icon={<BsFillPencilFill />}
-                onClick={() => {
-                  dispatch(setOpenDrawer(true))
-                  dispatch(setUser({ ...staff }))
-                }}
-              />
-            </Tooltip>
-            <Tooltip title='Xóa nhân viên này'>
-              <Popconfirm
-                title='Bạn có muốn xóa nhân viên này?'
-                okButtonProps={{ style: { backgroundColor: '#3C50E0', color: '#fff' } }}
-                // onCancel={cancelDelete}
-                onConfirm={() => handleDelete(staff._id!)}
-              >
+      render: (_: any, staff: IUser) => {
+        console.log(staff, 'staff')
+        return (
+          <div className='flex items-center justify-center'>
+            <Space size='middle'>
+              <Tooltip title='Cập nhật thông tin nhân viên này'>
                 <ButtonAnt
+                  className='bg-primary hover:!text-white flex items-center justify-center text-white'
                   size='large'
-                  className='bg-meta-1 hover:!text-white flex items-center justify-center text-white'
-                  icon={<BsFillTrashFill />}
-                />
-              </Popconfirm>
-            </Tooltip>
-          </Space>
-        </div>
-      )
+                  // icon={<BsFillPencilFill />}
+                  onClick={async () => {
+                    // dispatch(setOpenDrawer(true))
+                    const bodyPayload = {
+                      status: staff?.status == 'active' ? 'inActive' : 'active'
+                    }
+                    await axios.put('http://localhost:8000/api/user/role/' + staff._id, bodyPayload)
+                    setTimeout(() => {
+                      window.location.reload()
+                    }, 300)
+                  }}
+                >
+                  {staff?.status == 'inActive' ? 'Mở khóa' : 'Khóa'}
+                </ButtonAnt>
+              </Tooltip>
+              {/* <Tooltip title='Xóa nhân viên này'>
+                <Popconfirm
+                  title='Bạn có muốn xóa nhân viên này?'
+                  okButtonProps={{ style: { backgroundColor: '#3C50E0', color: '#fff' } }}
+                  // onCancel={cancelDelete}
+                  onConfirm={() => handleDelete(staff._id!)}
+                >
+                  <ButtonAnt
+                    size='large'
+                    className='bg-meta-1 hover:!text-white flex items-center justify-center text-white'
+                    icon={<BsFillTrashFill />}
+                  />
+                </Popconfirm>
+              </Tooltip> */}
+            </Space>
+          </div>
+        )
+      }
     }
   ]
   const staffs = staffData?.data?.docs
