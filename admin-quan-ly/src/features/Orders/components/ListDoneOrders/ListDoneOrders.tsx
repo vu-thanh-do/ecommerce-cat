@@ -235,27 +235,33 @@ const ListDoneOrders = () => {
       )
     }
   ]
-  const ordersData = doneOrder?.docs.map((item: any, index: number) => ({
-    user: {
-      username: item.inforOrderShipping?.name,
-      phone: item.inforOrderShipping?.phone,
-      avatar: item.user?.avatar,
-      address: item.inforOrderShipping?.address
-    },
-    payment: item.paymentMethodId,
-    user_order: item?.user?._id,
-    note: item.inforOrderShipping.noteShipping,
-    moneyPromotion: item.moneyPromotion,
-    priceShip: item.priceShipping,
-    products: item.items,
-    quantity: item.items.length,
-    totalPrice: item.total,
-    status: item.status,
-    timeOrder: item.createdAt,
-    key: item._id,
-    index: index + 1,
-    orderCode: item._id.toUpperCase()
-  }))
+  const newOrderData = []
+  for (const nOd of doneOrder.docs) {
+    newOrderData.push({ ...nOd, owner: nOd.items[0].product.owner })
+  }
+  console.log(newOrderData, 'newOrderData')
+  const ordersData = newOrderData
+    ?.filter((irc: any) => irc.owner?.toString() == user?._id?.toString()).map((item: any, index: number) => ({
+      user: {
+        username: item.inforOrderShipping?.name,
+        phone: item.inforOrderShipping?.phone,
+        avatar: item.user?.avatar,
+        address: item.inforOrderShipping?.address
+      },
+      payment: item.paymentMethodId,
+      user_order: item?.user?._id,
+      note: item.inforOrderShipping.noteShipping,
+      moneyPromotion: item.moneyPromotion,
+      priceShip: item.priceShipping,
+      products: item.items,
+      quantity: item.items.length,
+      totalPrice: item.items?.[0].price,
+      status: item.status,
+      timeOrder: item.createdAt,
+      key: item._id,
+      index: index + 1,
+      orderCode: item._id.toUpperCase()
+    }))
 
   if (isLoading) return <Loading />
   if (isError) return <NotFound />

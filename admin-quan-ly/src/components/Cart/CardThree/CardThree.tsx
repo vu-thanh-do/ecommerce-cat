@@ -97,9 +97,9 @@ const CardThree = ({ data, data2 }: CardThreeProps) => {
 
   const dataAnalyticMonth = (dataAnalytics3?.orders[1]?.analytics[0] as any)
     ? (dataAnalytics3?.orders[1]?.analytics[0] as any)[statusOrder].map((item: IAnalticRevenueMonth) => ({
-        name: `tháng ${item.month}`,
-        'Doanh thu': item.totalRevenue
-      }))
+      name: `tháng ${item.month}`,
+      'Doanh thu': item.totalRevenue
+    }))
     : []
 
   const handleChangeAnalyticMonth = (value: string) => {

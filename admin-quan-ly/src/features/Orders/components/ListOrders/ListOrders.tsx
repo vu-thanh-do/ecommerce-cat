@@ -167,15 +167,14 @@ const ListOrders = () => {
       width: 120,
       render: (status: string) => (
         <span
-          className={`text-white capitalize font-semibold ${
-            status === 'canceled'
+          className={`text-white capitalize font-semibold ${status === 'canceled'
               ? 'bg-meta-1'
               : status === 'pending'
-              ? 'bg-meta-6'
-              : status === 'done'
-              ? 'bg-meta-3'
-              : 'bg-meta-5'
-          } rounded inline-block px-2 py-1`}
+                ? 'bg-meta-6'
+                : status === 'done'
+                  ? 'bg-meta-3'
+                  : 'bg-meta-5'
+            } rounded inline-block px-2 py-1`}
         >
           {status}
         </span>
@@ -266,7 +265,7 @@ const ListOrders = () => {
     note: item.inforOrderShipping.noteShipping,
     priceShip: item.priceShipping,
     products: item.items,
-    totalPrice: item.total,
+    totalPrice: item.items?.[0].price,
     status: item.status,
     timeOrder: item.createdAt,
     key: item._id,

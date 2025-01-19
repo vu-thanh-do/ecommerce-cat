@@ -394,6 +394,7 @@ export const orderController = {
   /* lấy ra các đơn hàng theo trạng thái */
   getOrderByStatus: async (req, res, status) => {
     try {
+      const idOwner = '673aa96151bffd6d3dd32065'
       const { _page = 1, _limit = 10, q, startDate, endDate } = req.query;
       /* các điều kiện cần */
       const options = {
@@ -402,10 +403,11 @@ export const orderController = {
         sort: { createdAt: -1 },
         populate: [
           { path: 'user', select: '_id googleId username avatar' },
-          { path: 'items.product', select: '_id name sale' },
+          { path: 'items.product', select: '_id name sale owner' },
           { path: 'moneyPromotion.voucherId' },
         ],
       };
+      console.log()
       /* chức năng tìm kiếm đơn hàng */
       let query = { status };
       if (q) {
@@ -446,6 +448,7 @@ export const orderController = {
       if (!orders) {
         return res.status(400).json({ error: `get all order ${status} failed` });
       }
+    
       return res.status(200).json({ ...orders });
     } catch (error) {
       return res.status(500).json({ error: error.message });

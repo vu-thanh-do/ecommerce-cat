@@ -219,13 +219,13 @@ const ListPendingOrders = () => {
         <img src={item[0].image} className='object-cover w-20 h-20 rounded-lg cursor-pointer mb-1' alt='' />
       )
     },
-    {
-      title: 'Số lượng',
-      dataIndex: 'quantity',
-      key: 'quantity',
-      width: 91,
-      render: (quantity: number) => <p className='text-center'>{quantity}</p>
-    },
+    // {
+    //   title: 'Số lượng',
+    //   dataIndex: 'quantity',
+    //   key: 'quantity',
+    //   width: 91,
+    //   render: (quantity: number) => <p className='text-center'>{quantity}</p>
+    // },
     {
       title: 'Tổng Tiền',
       dataIndex: 'totalPrice',
@@ -338,29 +338,36 @@ const ListPendingOrders = () => {
   ]
   if (isLoading) return <Loading />
   if (isError) return <NotFound />
+  const newOrderData = []
+  for (const nOd of pendingOrder.docs) {
+    newOrderData.push({ ...nOd, owner: nOd.items[0].product.owner })
+  }
+  console.log(newOrderData, 'newOrderData')
+  const ordersData = newOrderData
+    ?.filter((irc: any) => irc.owner?.toString() == user?._id?.toString())
+    .map((item: any, index: number) => ({
+      user: {
+        username: item.inforOrderShipping?.name,
+        phone: item.inforOrderShipping?.phone,
+        avatar: item.user?.avatar,
+        address: item.inforOrderShipping?.address
+      },
 
-  const ordersData = pendingOrder?.docs.map((item: any, index: number) => ({
-    user: {
-      username: item.inforOrderShipping?.name,
-      phone: item.inforOrderShipping?.phone,
-      avatar: item.user?.avatar,
-      address: item.inforOrderShipping?.address
-    },
-
-    payment: item.paymentMethodId,
-    user_order: item?.user?._id,
-    note: item.inforOrderShipping.noteShipping,
-    priceShip: item.priceShipping,
-    quantity: item.items.length,
-    products: item.items,
-    totalPrice: item.total,
-    status: item.status,
-    moneyPromotion: item.moneyPromotion,
-    timeOrder: item.createdAt,
-    key: item._id,
-    index: index + 1,
-    orderCode: item._id.toUpperCase()
-  }))
+      payment: item.paymentMethodId,
+      user_order: item?.user?._id,
+      note: item.inforOrderShipping.noteShipping,
+      priceShip: item.priceShipping,
+      quantity: item.items.length,
+      products: item.items,
+      totalPrice: item.items?.[0].price,
+      owner: item.items?.[0].owner,
+      status: item.status,
+      moneyPromotion: item.moneyPromotion,
+      timeOrder: item.createdAt,
+      key: item._id,
+      index: index + 1,
+      orderCode: item._id.toUpperCase()
+    }))
 
   return (
     <>
